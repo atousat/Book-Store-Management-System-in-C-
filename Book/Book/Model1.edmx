@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BookModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="BookModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="BookModel.Store.Admin" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Book" EntityType="BookModel.Store.Book" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Member" EntityType="BookModel.Store.Member" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PassWord" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="BookName" />
+          </Key>
+          <Property Name="BookName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="AuthorName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Topic" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ShelfNumber" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="Number" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="Price" Type="char" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="NationalCode" />
+          </Key>
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Phone" Type="char" Nullable="false" MaxLength="11" />
+          <Property Name="NationalCode" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="BookName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Function Name="CreatAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="pass" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="CreatBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="author" Type="nvarchar" Mode="In" />
+          <Parameter Name="topic" Type="nvarchar" Mode="In" />
+          <Parameter Name="shelf" Type="char" Mode="In" />
+          <Parameter Name="num" Type="char" Mode="In" />
+          <Parameter Name="price" Type="char" Mode="In" />
+        </Function>
+        <Function Name="CreatMember" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="lastname" Type="nvarchar" Mode="In" />
+          <Parameter Name="phone" Type="char" Mode="In" />
+          <Parameter Name="nationalcode" Type="char" Mode="In" />
+          <Parameter Name="bookname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetAllUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="pass" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ListBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ListMember" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lastname" Type="nvarchar" Mode="In" />
+          <Parameter Name="nationalcode" Type="char" Mode="In" />
+        </Function>
+        <Function Name="ListPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ListPriceBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ListReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ListSearchBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="topic" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ListTopic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="topic" Type="nvarchar" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BookModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BookEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="BookModel.Admin" />
+          <FunctionImport Name="CreatAdmin">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllUser" ReturnType="Collection(BookModel.GetAllUser_Result)" />
+          <FunctionImport Name="GetUser" ReturnType="Collection(BookModel.GetUser_Result)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Members" EntityType="BookModel.Member" />
+          <FunctionImport Name="CreatMember">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="lastname" Mode="In" Type="String" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="nationalcode" Mode="In" Type="String" />
+            <Parameter Name="bookname" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Books" EntityType="BookModel.Book" />
+          <FunctionImport Name="CreatBook">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="author" Mode="In" Type="String" />
+            <Parameter Name="topic" Mode="In" Type="String" />
+            <Parameter Name="shelf" Mode="In" Type="String" />
+            <Parameter Name="num" Mode="In" Type="String" />
+            <Parameter Name="price" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ListPrice" ReturnType="Collection(String)" />
+          <FunctionImport Name="ListPriceBook" ReturnType="Collection(BookModel.ListPriceBook_Result)" />
+          <FunctionImport Name="ListMember" ReturnType="Collection(BookModel.ListMember_Result)">
+            <Parameter Name="lastname" Mode="In" Type="String" />
+            <Parameter Name="nationalcode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ListBook" ReturnType="Collection(BookModel.ListBook_Result)">
+          <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ListSearchBook" ReturnType="Collection(BookModel.ListSearchBook_Result)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="topic" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ListTopic" ReturnType="Collection(BookModel.ListTopic_Result)">
+          <Parameter Name="topic" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ListReport" ReturnType="Collection(BookModel.ListReport_Result)" />
+        </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PassWord" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <ComplexType Name="GetAllUser_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PassWord" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetUser_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PassWord" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="NationalCode" />
+          </Key>
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="NationalCode" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="BookName" />
+          </Key>
+          <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AuthorName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Topic" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShelfNumber" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Number" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Price" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="ListPriceBook_Result">
+          <Property Type="String" Name="Price" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ListMember_Result">
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="NationalCode" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ListBook_Result">
+          <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="AuthorName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Topic" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ShelfNumber" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Number" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Price" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="ListSearchBook_Result">
+          <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="AuthorName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Topic" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ShelfNumber" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Number" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Price" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="ListTopic_Result">
+          <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="AuthorName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Topic" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ShelfNumber" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Number" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Price" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="ListReport_Result">
+          <Property Type="String" Name="Price" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BookModelStoreContainer" CdmEntityContainer="BookEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="BookModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CreatAdmin" FunctionName="BookModel.Store.CreatAdmin" />
+          <FunctionImportMapping FunctionImportName="GetAllUser" FunctionName="BookModel.Store.GetAllUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BookModel.GetAllUser_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetUser" FunctionName="BookModel.Store.GetUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BookModel.GetUser_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="BookModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CreatMember" FunctionName="BookModel.Store.CreatMember" />
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="BookModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="ShelfNumber" ColumnName="ShelfNumber" />
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CreatBook" FunctionName="BookModel.Store.CreatBook" />
+          <FunctionImportMapping FunctionImportName="ListPrice" FunctionName="BookModel.Store.ListPrice" />
+          <FunctionImportMapping FunctionImportName="ListPriceBook" FunctionName="BookModel.Store.ListPriceBook">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BookModel.ListPriceBook_Result">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListMember" FunctionName="BookModel.Store.ListMember">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BookModel.ListMember_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListBook" FunctionName="BookModel.Store.ListBook">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BookModel.ListBook_Result">
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+                <ScalarProperty Name="ShelfNumber" ColumnName="ShelfNumber" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListSearchBook" FunctionName="BookModel.Store.ListSearchBook">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BookModel.ListSearchBook_Result">
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+                <ScalarProperty Name="ShelfNumber" ColumnName="ShelfNumber" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListTopic" FunctionName="BookModel.Store.ListTopic">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BookModel.ListTopic_Result">
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+                <ScalarProperty Name="ShelfNumber" ColumnName="ShelfNumber" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ListReport" FunctionName="BookModel.Store.ListReport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BookModel.ListReport_Result">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

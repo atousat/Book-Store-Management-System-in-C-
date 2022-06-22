@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="BookModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="BookModel.Store.Admin" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Book" EntityType="BookModel.Store.Book" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Member" EntityType="BookModel.Store.Member" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="PassWord" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="BookName" />
+    </Key>
+    <Property Name="BookName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="AuthorName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Topic" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="ShelfNumber" Type="char" Nullable="false" MaxLength="10" />
+    <Property Name="Number" Type="char" Nullable="false" MaxLength="10" />
+    <Property Name="Price" Type="char" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="NationalCode" />
+    </Key>
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Phone" Type="char" Nullable="false" MaxLength="11" />
+    <Property Name="NationalCode" Type="char" Nullable="false" MaxLength="10" />
+    <Property Name="BookName" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <Function Name="CreatAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="pass" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="CreatBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="author" Type="nvarchar" Mode="In" />
+    <Parameter Name="topic" Type="nvarchar" Mode="In" />
+    <Parameter Name="shelf" Type="char" Mode="In" />
+    <Parameter Name="num" Type="char" Mode="In" />
+    <Parameter Name="price" Type="char" Mode="In" />
+  </Function>
+  <Function Name="CreatMember" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="lastname" Type="nvarchar" Mode="In" />
+    <Parameter Name="phone" Type="char" Mode="In" />
+    <Parameter Name="nationalcode" Type="char" Mode="In" />
+    <Parameter Name="bookname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetAllUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="pass" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ListBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ListMember" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lastname" Type="nvarchar" Mode="In" />
+    <Parameter Name="nationalcode" Type="char" Mode="In" />
+  </Function>
+  <Function Name="ListPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ListPriceBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ListReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ListSearchBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="topic" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ListTopic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="topic" Type="nvarchar" Mode="In" />
+  </Function>
+</Schema>

@@ -1,0 +1,16 @@
+D:\Book\Book\Book\bin\Debug\Book.exe.config
+D:\Book\Book\Book\bin\Debug\Book.exe
+D:\Book\Book\Book\bin\Debug\Book.pdb
+D:\Book\Book\Book\bin\Debug\EntityFramework.dll
+D:\Book\Book\Book\bin\Debug\EntityFramework.xml
+D:\Book\Book\Book\obj\Debug\Book.csprojResolveAssemblyReference.cache
+D:\Book\Book\Book\obj\Debug\Book.Form1.resources
+D:\Book\Book\Book\obj\Debug\Book.Properties.Resources.resources
+D:\Book\Book\Book\obj\Debug\Book.csproj.GenerateResource.Cache
+D:\Book\Book\Book\obj\Debug\Book.exe
+D:\Book\Book\Book\obj\Debug\Book.pdb
+D:\Book\Book\Book\obj\Debug\Book.Home.resources
+D:\Book\Book\Book\obj\Debug\Book.FrmMember.resources
+D:\Book\Book\Book\obj\Debug\Book.FrmBook.resources
+D:\Book\Book\Book\obj\Debug\Book.FrmAboutUS.resources
+D:\Book\Book\Book\obj\Debug\Book.FrmReport.resources

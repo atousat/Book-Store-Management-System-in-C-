@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BookEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="BookModel.Admin" />
+    <FunctionImport Name="CreatAdmin">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllUser" ReturnType="Collection(BookModel.GetAllUser_Result)" />
+    <FunctionImport Name="GetUser" ReturnType="Collection(BookModel.GetUser_Result)">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Members" EntityType="BookModel.Member" />
+    <FunctionImport Name="CreatMember">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="lastname" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="nationalcode" Mode="In" Type="String" />
+      <Parameter Name="bookname" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Books" EntityType="BookModel.Book" />
+    <FunctionImport Name="CreatBook">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="author" Mode="In" Type="String" />
+      <Parameter Name="topic" Mode="In" Type="String" />
+      <Parameter Name="shelf" Mode="In" Type="String" />
+      <Parameter Name="num" Mode="In" Type="String" />
+      <Parameter Name="price" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ListPrice" ReturnType="Collection(String)" />
+    <FunctionImport Name="ListPriceBook" ReturnType="Collection(BookModel.ListPriceBook_Result)" />
+    <FunctionImport Name="ListMember" ReturnType="Collection(BookModel.ListMember_Result)">
+      <Parameter Name="lastname" Mode="In" Type="String" />
+      <Parameter Name="nationalcode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ListBook" ReturnType="Collection(BookModel.ListBook_Result)">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ListSearchBook" ReturnType="Collection(BookModel.ListSearchBook_Result)">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="topic" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ListTopic" ReturnType="Collection(BookModel.ListTopic_Result)">
+      <Parameter Name="topic" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ListReport" ReturnType="Collection(BookModel.ListReport_Result)" />
+  </EntityContainer>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="PassWord" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <ComplexType Name="GetAllUser_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PassWord" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetUser_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="PassWord" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="NationalCode" />
+    </Key>
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Phone" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="NationalCode" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="BookName" />
+    </Key>
+    <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="AuthorName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Topic" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ShelfNumber" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Number" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Price" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="ListPriceBook_Result">
+    <Property Type="String" Name="Price" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ListMember_Result">
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="false" MaxLength="11" />
+    <Property Type="String" Name="NationalCode" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ListBook_Result">
+    <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="AuthorName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Topic" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ShelfNumber" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Number" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Price" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="ListSearchBook_Result">
+    <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="AuthorName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Topic" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ShelfNumber" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Number" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Price" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="ListTopic_Result">
+    <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="AuthorName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Topic" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ShelfNumber" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Number" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Price" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="ListReport_Result">
+    <Property Type="String" Name="Price" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="BookName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+</Schema>

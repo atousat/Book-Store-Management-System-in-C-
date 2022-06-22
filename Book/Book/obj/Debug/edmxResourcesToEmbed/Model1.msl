@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BookModelStoreContainer" CdmEntityContainer="BookEntities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="BookModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CreatAdmin" FunctionName="BookModel.Store.CreatAdmin" />
+    <FunctionImportMapping FunctionImportName="GetAllUser" FunctionName="BookModel.Store.GetAllUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BookModel.GetAllUser_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetUser" FunctionName="BookModel.Store.GetUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BookModel.GetUser_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Members">
+      <EntityTypeMapping TypeName="BookModel.Member">
+        <MappingFragment StoreEntitySet="Member">
+          <ScalarProperty Name="BookName" ColumnName="BookName" />
+          <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CreatMember" FunctionName="BookModel.Store.CreatMember" />
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="BookModel.Book">
+        <MappingFragment StoreEntitySet="Book">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="ShelfNumber" ColumnName="ShelfNumber" />
+          <ScalarProperty Name="Topic" ColumnName="Topic" />
+          <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+          <ScalarProperty Name="BookName" ColumnName="BookName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CreatBook" FunctionName="BookModel.Store.CreatBook" />
+    <FunctionImportMapping FunctionImportName="ListPrice" FunctionName="BookModel.Store.ListPrice" />
+    <FunctionImportMapping FunctionImportName="ListPriceBook" FunctionName="BookModel.Store.ListPriceBook">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BookModel.ListPriceBook_Result">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="BookName" ColumnName="BookName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ListMember" FunctionName="BookModel.Store.ListMember">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BookModel.ListMember_Result">
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+          <ScalarProperty Name="BookName" ColumnName="BookName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ListBook" FunctionName="BookModel.Store.ListBook">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BookModel.ListBook_Result">
+          <ScalarProperty Name="BookName" ColumnName="BookName" />
+          <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+          <ScalarProperty Name="Topic" ColumnName="Topic" />
+          <ScalarProperty Name="ShelfNumber" ColumnName="ShelfNumber" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ListSearchBook" FunctionName="BookModel.Store.ListSearchBook">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BookModel.ListSearchBook_Result">
+          <ScalarProperty Name="BookName" ColumnName="BookName" />
+          <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+          <ScalarProperty Name="Topic" ColumnName="Topic" />
+          <ScalarProperty Name="ShelfNumber" ColumnName="ShelfNumber" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ListTopic" FunctionName="BookModel.Store.ListTopic">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BookModel.ListTopic_Result">
+          <ScalarProperty Name="BookName" ColumnName="BookName" />
+          <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+          <ScalarProperty Name="Topic" ColumnName="Topic" />
+          <ScalarProperty Name="ShelfNumber" ColumnName="ShelfNumber" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ListReport" FunctionName="BookModel.Store.ListReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BookModel.ListReport_Result">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="BookName" ColumnName="BookName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
